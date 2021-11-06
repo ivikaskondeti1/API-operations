@@ -24,10 +24,11 @@ const startDbobjandserver = async () => {
 };
 startDbobjandserver();
 //list of all players in the team
-app.get("/players/", async (Request, Response) => {
+
+app.get("/players/", async (request, responce) => {
   const DbQuery = `SELECT * FROM cricket_team;`;
   const dbresponce = await Dbobj.all(DbQuery);
-  Response.send(dbresponce);
+  responce.send(dbresponce);
 });
 
 //Creates a new player in the team
@@ -78,3 +79,4 @@ app.delete("/players/:playerId/", async (Request, Response) => {
   const dbresponce = await Dbobj.get(DbQuery);
   Response.send("Player Removed");
 });
+module.exports = app;
